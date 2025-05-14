@@ -1,1 +1,1 @@
-Kumpulan tugas Bootcamp DAta Science - Digital Skola
+Kumpulan tugas Bootcamp Data Science - Digital Skola
