@@ -1,0 +1,23 @@
+-- Soal No 1
+select t1."Product_Description" from ecommerce.online_sales t1 
+	where extract(month from t1."Transaction_Date") = 7 
+  and extract(year from t1."Transaction_Date") = 2019;
+ 
+-- Soal No. 2
+select t1."Product_Category", sum(t1."Quantity") as "Jumlah_Penjualan" from ecommerce.online_sales t1
+	group by t1."Product_Category"
+  having sum(t1."Quantity") > 20000;
+  
+-- Soal No. 3
+select avg(t1."Quantity"*t1."Avg_Price") as "Rata-rata GMV" from ecommerce.online_sales t1
+	where t1."Product_Category" = 'Bags'
+  group by t1."Product_Category";
+  
+-- Soal No. 4
+select t1."CustomerID",t1."Location" from ecommerce.customers t1
+	where t1."Tenure_Months" > (select avg(t2."Tenure_Months") from ecommerce.customers t2);
+  
+-- Soal No. 5
+select t1."Transaction_Date" from ecommerce.online_sales t1 
+	inner join ecommerce.customers t2 on t1."CustomerID" = t2."CustomerID"
+	where t2."Location" like 'New%';
